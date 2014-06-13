@@ -15,6 +15,7 @@ import static br.com.orlandoburli.pmo.model.utils.Dicionario.Perfil.Colunas.*;
 
 @Table(Dicionario.Perfil.TABELA_PERFIL)
 public class PerfilVo extends BaseVo {
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = ID_PERFIL, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idPerfil;

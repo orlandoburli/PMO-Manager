@@ -28,10 +28,10 @@ public class UsuarioBe extends BaseBe<UsuarioVo, UsuarioDao> {
 
 		if (usuario2 != null) {
 			if (vo.isNew()) {
-				throw new EmailDuplicadoException("Esse email já existe cadastrado em outro usuário!");
+				throw new EmailDuplicadoException("Esse email já existe cadastrado em outro usuário!", "email");
 			} else {
 				if (!vo.getIdUsuario().equals(usuario2.getIdUsuario())) {
-					throw new EmailDuplicadoException("Esse email já existe cadastrado em outro usuário!");
+					throw new EmailDuplicadoException("Esse email já existe cadastrado em outro usuário!", "email");
 				}
 			}
 		}
@@ -42,10 +42,10 @@ public class UsuarioBe extends BaseBe<UsuarioVo, UsuarioDao> {
 
 		if (usuario3 != null) {
 			if (vo.isNew()) {
-				throw new LoginDuplicadoException("Esse login já existe cadastrado em outro usuário!");
+				throw new LoginDuplicadoException("Esse login já existe cadastrado em outro usuário!", "login");
 			} else {
 				if (!vo.getIdUsuario().equals(usuario3.getIdUsuario())) {
-					throw new LoginDuplicadoException("Esse login já existe cadastrado em outro usuário!");
+					throw new LoginDuplicadoException("Esse login já existe cadastrado em outro usuário!", "login");
 				}
 			}
 		}
@@ -82,7 +82,7 @@ public class UsuarioBe extends BaseBe<UsuarioVo, UsuarioDao> {
 		UsuarioVo usuario = getByLogin(login);
 
 		if (usuario == null) {
-			throw new LoginInvalidoException("Usuário / Senha inválidos!");
+			throw new LoginInvalidoException("Usuário / Senha inválidos!", "login");
 		}
 
 		if (usuario.getLogin().equalsIgnoreCase(login) && usuario.getSenha().equals(senha)) {
@@ -91,7 +91,7 @@ public class UsuarioBe extends BaseBe<UsuarioVo, UsuarioDao> {
 			}
 		}
 
-		throw new LoginInvalidoException("Usuário / Senha inválidos!");
+		throw new LoginInvalidoException("Usuário / Senha inválidos!", "login");
 	}
 
 }

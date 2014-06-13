@@ -6,8 +6,8 @@ public class LoginDuplicadoException extends BeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public LoginDuplicadoException(String message) {
-		super(message);
+	public LoginDuplicadoException(String message, String field) {
+		super(message, field);
 	}
 
 }

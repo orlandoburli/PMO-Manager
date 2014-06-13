@@ -17,6 +17,7 @@ import static br.com.orlandoburli.pmo.model.utils.Dicionario.Pessoa.Colunas.*;
 
 @Table(Dicionario.Pessoa.TABELA_PESSOA)
 public class PessoaVo extends BaseVo {
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = ID_PESSOA, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idPessoa;

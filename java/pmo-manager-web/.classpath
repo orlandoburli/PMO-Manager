@@ -8,5 +8,11 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
 	<classpathentry kind="src" path="WEB-INF/src"/>
 	<classpathentry kind="src" output="work" path="work"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dao-oracle"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dao-postgresql"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pmo-manager-model"/>
+	<classpathentry kind="lib" path="/Users/orlandoburli/Documents/java/lib/commons-fileupload-1.3/lib/commons-fileupload-1.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Google Gson"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

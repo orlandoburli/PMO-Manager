@@ -17,6 +17,7 @@ import static br.com.orlandoburli.pmo.model.utils.Dicionario.Usuario.Colunas.*;
 
 @Table(Dicionario.Usuario.TABELA_USUARIO)
 public class UsuarioVo extends BaseVo {
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = ID_USUARIO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idUsuario;
@@ -50,6 +51,9 @@ public class UsuarioVo extends BaseVo {
 	@Domain(SimNao.class)
 	private String ativo;
 
+	@Column(name = PATH_FOTO, dataType = DataType.VARCHAR, maxSize = 500)
+	private String pathFoto;
+
 	@Column(name = ID_PERFIL, dataType = DataType.INT, isNotNull = true)
 	@NotNull
 	@NotEmpty
@@ -58,6 +62,20 @@ public class UsuarioVo extends BaseVo {
 
 	@Join(columnsLocal = { ID_PERFIL }, columnsRemote = { Perfil.Colunas.ID_PERFIL })
 	private PerfilVo perfil;
+
+	public String getPrimeiroNome() {
+		if (getNome() != null) {
+			return getNome().substring(0, getNome().indexOf(" ")).trim();
+		}
+		return "";
+	}
+
+	public String getSegundoNome() {
+		if (getNome() != null) {
+			return getNome().substring(getNome().indexOf(" ")).trim();
+		}
+		return "";
+	}
 
 	public Integer getIdUsuario() {
 		return idUsuario;
@@ -121,5 +139,13 @@ public class UsuarioVo extends BaseVo {
 
 	public void setPerfil(PerfilVo perfil) {
 		this.perfil = perfil;
+	}
+
+	public String getPathFoto() {
+		return pathFoto;
+	}
+
+	public void setPathFoto(String pathFoto) {
+		this.pathFoto = pathFoto;
 	}
 }

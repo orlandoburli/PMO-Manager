@@ -1,0 +1,273 @@
+<project name="pmo-manager-core" default="build-all">
+
+	<!-- Definicao do arquivo de propriedades -->
+	<property file="build.properties" />
+
+
+
+	<target name="compile">
+		<antcall target="revision">
+		</antcall>
+	</target>
+
+	<target name="dist">
+		<antcall target="minor">
+		</antcall>
+	</target>
+
+	<target name="revision">
+		<propertyfile file="build_info.properties">
+			<entry key="build.revision.number" type="int" operation="+" value="1" pattern="00" />
+		</propertyfile>
+
+		<antcall target="generate.version.number" />
+	</target>
+
+	<target name="minor">
+		<propertyfile file="build_info.properties">
+			<entry key="build.minor.number" type="int" operation="+" value="1" pattern="00" />
+			<entry key="build.revision.number" type="int" value="0" pattern="00" />
+		</propertyfile>
+
+		<antcall target="generate.version.number" />
+	</target>
+
+	<target name="major">
+		<propertyfile file="build_info.properties">
+			<entry key="build.major.number" type="int" operation="+" value="1" pattern="00" />
+			<entry key="build.minor.number" type="int" value="0" pattern="00" />
+			<entry key="build.revision.number" type="int" value="0" pattern="00" />
+		</propertyfile>
+
+		<antcall target="generate.version.number" />
+	</target>
+
+	<target name="all">
+		<propertyfile file="build_info.properties">
+			<entry key="build.major.number" type="int" operation="+" value="1" pattern="00" />
+			<entry key="build.minor.number" type="int" operation="+" value="1" pattern="00" />
+			<entry key="build.revision.number" type="int" operation="+" value="1" pattern="00" />
+		</propertyfile>
+
+		<antcall target="generate.version.number" />
+	</target>
+
+	<target name="generate.version.number">
+
+		<property file="build_info.properties" />
+
+		<tstamp>
+			<format property="build.time" pattern="dd/MM/yyyy HH:mm:ss" unit="hour" />
+		</tstamp>
+
+		<property name="build.number" value="${build.major.number}.${build.minor.number}.${build.revision.number}" />
+
+		<property name="new.version.number" value="${build.number} build: ${build.time}" />
+
+		<echo message="${new.version.number}" />
+
+
+		<propertyfile file="build_info.properties">
+			<entry key="version.number" value="${new.version.number}" />
+		</propertyfile>
+
+	</target>
+
+	<target name="baixar-git">
+		<!-- Incremento de versoes -->
+		<property file="build_info.properties" />
+		<replaceregexp file="build.properties" match="(version[ \t]*=[ \t]*)+.*$" byline="true" replace="\1${new.version.number}" />
+
+		<sshexec host="github.com" username="orlandoburli" password="carol1408" passphrase="carol1408" command="git clone git@github.com:ultraveloz/pmo-manager.git  ${pmo.home}" trust="true" />
+	</target>
+
+	<!-- INICIO CORE -->
+
+	<!-- Target para limpar a pasta compilada do core -->
+	<target name="limpar-core" description="Limpa a pasta compilada do projeto core">
+		<delete dir="${pmo.build.dir.core}" failonerror="false">
+		</delete>
+		<mkdir dir="${pmo.build.dir.core}" />
+	</target>
+
+	<!-- Target para compilar o projeto pmo-manager-core -->
+	<target name="compilar-core" depends="limpar-core">
+		<javac srcdir="${pmo.dir.core}/src" destdir="${pmo.build.dir.core}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
+			<classpath>
+				<fileset dir="${tomcat-lib.dir}">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="/Users/orlandoburli/Documents/java/lib/google-gson-2.2.4">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- Target para empacotar o pmo-manager-core -->
+	<target name="empacotar-core" depends="compilar-core">
+		<delete file="${deploy.dir}/core.jar">
+		</delete>
+		<jar destfile="${deploy.dir}/core.jar" basedir="${pmo.build.dir.core}">
+		</jar>
+	</target>
+
+	<!-- FIM PMO-MANAGER-CORE -->
+
+	<!-- INICIO DAO-POSTGRESQL -->
+	<!-- Target para limpar a pasta compilada do core -->
+	<target name="limpar-dao-postgresql" description="Limpa a pasta compilada do projeto dao-postgresql">
+		<delete dir="${pmo.build.dir.dao-postgresql}}" failonerror="false">
+		</delete>
+		<mkdir dir="${pmo.build.dir.dao-postgresql}" />
+	</target>
+
+	<!-- Target para compilar o projeto pmo-manager-dao-postgresql -->
+	<target name="compilar-dao-postgresql" depends="limpar-dao-postgresql">
+		<javac srcdir="${pmo.dir.dao-postgresql}/src" destdir="${pmo.build.dir.dao-postgresql}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
+			<classpath>
+				<fileset dir="${deploy.dir}">
+					<include name="core.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- Target para empacotar o pmo-manager-dao-postgresql -->
+	<target name="empacotar-dao-postgresql" depends="compilar-dao-postgresql">
+		<delete file="${deploy.dir}/dao-postgresql.jar">
+		</delete>
+		<jar destfile="${deploy.dir}/dao-postgresql.jar" basedir="${pmo.build.dir.dao-postgresql}">
+		</jar>
+	</target>
+	<!-- FIM DAO-POSTGRESQL -->
+
+	<!-- INICIO PMO-MANAGER-MODEL -->
+	<!-- Target para limpar a pasta compilada do model -->
+	<target name="limpar-pmo-manager-model" description="Limpa a pasta compilada do projeto pmo-manager-model">
+		<delete dir="${pmo.build.dir.model}" failonerror="false">
+		</delete>
+		<mkdir dir="${pmo.build.dir.model}" />
+	</target>
+
+	<!-- Target para compilar o projeto pmo-manager-model -->
+	<target name="compilar-pmo-manager-model" depends="limpar-pmo-manager-model">
+		<javac srcdir="${pmo.dir.model}/src" destdir="${pmo.build.dir.model}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
+			<classpath>
+				<fileset dir="/Users/orlandoburli/Documents/java/lib/pagseguro-java-2.1.2">
+					<include name="pagseguro-api-2.1.2.jar" />
+				</fileset>
+				<fileset dir="/Users/orlandoburli/Documents/java/lib/commons-email-1.3.2">
+					<include name="commons-email-1.3.2.jar" />
+				</fileset>
+				<fileset dir="${deploy.dir}">
+					<include name="core.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- Target para empacotar o pmo-manager-model -->
+	<target name="empacotar-pmo-manager-model" depends="compilar-pmo-manager-model">
+		<delete file="${deploy.dir}/pmo-manager-model.jar">
+		</delete>
+		<jar destfile="${deploy.dir}/pmo-manager-model.jar" basedir="${pmo.build.dir.model}">
+		</jar>
+	</target>
+	<!-- FIM PMO-MANAGER-MODEL -->
+
+
+	<!-- INICIO PMO-MANAGER-WEB -->
+	<!-- Target para limpar a pasta compilada do web -->
+	<target name="limpar-pmo-manager-web" description="Limpa a pasta compilada do projeto pmo-manager-web">
+		<delete dir="${pmo.build.dir.web}" failonerror="false">
+		</delete>
+		<mkdir dir="${pmo.build.dir.web}" />
+	</target>
+
+	<!-- Target para compilar o projeto pmo-manager-web -->
+	<target name="compilar-pmo-manager-web" depends="limpar-pmo-manager-web,empacotar-core,empacotar-dao-postgresql,empacotar-pmo-manager-model">
+		<javac srcdir="${pmo.dir.web}/WEB-INF/src" destdir="${pmo.build.dir.web}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
+			<classpath>
+				<fileset dir="${deploy.dir}">
+					<include name="core.jar" />
+					<include name="pmo-manager-model.jar" />
+					<include name="/Users/orlandoburli/Documents/java/lib/lucene-4.8.1/core/lucene-core-4.8.1.jar"/>
+					<include name="/Users/orlandoburli/Documents/java/lib/lucene-4.8.1/analysis/common/lucene-analyzers-common-4.8.1.jar"/>
+					<include name="/Users/orlandoburli/Documents/java/lib/lucene-4.8.1/queries/lucene-queries-4.8.1.jar"/>
+					<include name="/Users/orlandoburli/Documents/java/lib/lucene-4.8.1/queryparser/lucene-queryparser-4.8.1.jar"/>
+				</fileset>
+				<fileset dir="${tomcat-lib.dir}">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="/Users/orlandoburli/Documents/java/lib/google-gson-2.2.4">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- Target para empacotar o pmo-manager-web -->
+	<target name="empacotar-pmo-manager-web" depends="compilar-pmo-manager-web">
+		<property file="build_info.properties" />
+
+		<antcall target="generate.version.number" />
+	    
+		<delete file="${deploy.dir}/pmo-manager-web.war">
+		</delete>
+
+		<!-- Copia os arquivos de resources -->
+		<copy todir="${pmo.build.dir.web}">
+			<fileset dir="${pmo.dir.web}/src" includes="**/*.properties">
+			</fileset>
+		</copy>
+
+		<war destfile="${deploy.dir}/pmo.war" webxml="${pmo.dir.web}/WEB-INF/web.xml">
+
+			<classes dir="${pmo.build.dir.web}">
+			</classes>
+
+			<lib dir="${deploy.dir}">
+				<include name="core.jar" />
+				<include name="dao-postgresql.jar" />
+				<include name="pmo-manager-model.jar" />
+			</lib>
+
+			<fileset dir="${pmo.dir.web}/">
+				<exclude name="WEB-INF/classes/" />
+			</fileset>
+
+			<manifest>
+				<attribute name="Versao" value="${version.number}" />
+			</manifest>
+		</war>
+
+	</target>
+	<!-- FIM PMO-MANAGER-WEB -->
+
+	<!-- Deploys remotos -->
+
+	<target name="deploy-producao-pmo-manager-web" depends="empacotar-pmo-manager-web">
+		<sshexec command="rm -Rf /home/pmo/deploy/pmo.war" host="${servidor.producao.host}" username="${servidor.producao.user}" password="${servidor.producao.password}" />
+		<scp todir="${servidor.producao.user}@${servidor.producao.host}:${servidor.producao.path.deploy}" file="${deploy.dir}/pmo.war" host="${servidor.producao.host}" username="${servidor.producao.user}" password="${servidor.producao.password}" />
+		<sshexec command="mv /home/pmo/deploy/pmo.war /home/pmo/app" host="${servidor.producao.host}" username="${servidor.producao.user}" password="${servidor.producao.password}" />
+	</target>
+
+	<!-- Target para compilacao completa do projeto -->
+	<target name="build-all" description="Compilação completa do projeto">
+
+	    <antcall target="empacotar-pmo-manager-web" inheritall="true" inheritrefs="true">
+		</antcall>
+
+	</target>
+
+	<!-- Target para deploy completo do projeto -->
+
+	<target name="deploy-all">
+
+		<antcall target="deploy-producao-pmo-manager-web" inheritall="true" inheritrefs="true">
+		</antcall>
+
+	</target>
+
+</project>

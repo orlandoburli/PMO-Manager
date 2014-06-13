@@ -8,4 +8,16 @@
     <warLocation></warLocation>
     <extraInfo></extraInfo>
     <webPath>/pmo-manager-web</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/Users/orlandoburli/Documents/java/lib/commons-fileupload-1.3/lib/commons-fileupload-1.3.jar</webClassPathEntry>
+        <webClassPathEntry>/core/bin</webClassPathEntry>
+        <webClassPathEntry>/dao-oracle/bin</webClassPathEntry>
+        <webClassPathEntry>/dao-postgresql/bin</webClassPathEntry>
+        <webClassPathEntry>/pmo-manager-model/bin</webClassPathEntry>
+        <webClassPathEntry>/pmo-manager-web/WEB-INF/classes</webClassPathEntry>
+        <webClassPathEntry>/pmo-manager-web/work</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jdt.USER_LIBRARY/Google Gson</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jdt.USER_LIBRARY/jdbc-oracle</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jdt.USER_LIBRARY/postgresql-jdbc</webClassPathEntry>
+    </webClassPathEntries>
 </tomcatProjectProperties>
