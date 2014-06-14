@@ -3,6 +3,7 @@ package br.com.orlandoburli.pmo.tests.suites;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -23,6 +24,7 @@ import br.com.orlandoburli.pmo.tests.projetos.TermoAberturaTests;
 @SuiteClasses({ MenuTests.class, ObjetoTests.class, PerfilTests.class, UsuarioTests.class, PessoaTests.class, PessoaFisicaTests.class, PessoaJuridicaTests.class, CargoTests.class, ProjetoTests.class, TermoAberturaTests.class, TermoAberturaInteressadoTests.class })
 public class AllPostgresTests {
 
+	@BeforeClass
 	public static void prepare() {
 		try {
 			System.getProperties().load(new FileInputStream("teste-postgres.properties"));

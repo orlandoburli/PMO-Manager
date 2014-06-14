@@ -6,6 +6,7 @@ import br.com.orlandoburli.framework.core.be.validation.annotations.validators.N
 import br.com.orlandoburli.framework.core.dao.annotations.Column;
 import br.com.orlandoburli.framework.core.dao.annotations.DataType;
 import br.com.orlandoburli.framework.core.dao.annotations.Join;
+import br.com.orlandoburli.framework.core.dao.annotations.JoinWhen;
 import br.com.orlandoburli.framework.core.dao.annotations.Table;
 import br.com.orlandoburli.framework.core.dao.annotations.UniqueConstraint;
 import br.com.orlandoburli.framework.core.vo.BaseVo;
@@ -42,7 +43,7 @@ public class TermoAberturaInteressadoVo extends BaseVo {
 	@Description("Função")
 	private String funcao;
 
-	@Join(columnsLocal = { ID_TERMO }, columnsRemote = { TermoAbertura.Colunas.ID_TERMO })
+	@Join(columnsLocal = { ID_TERMO }, columnsRemote = { TermoAbertura.Colunas.ID_TERMO }, joinWhen = JoinWhen.REQUESTED)
 	private TermoAberturaVo termo;
 
 	@Join(columnsLocal = { ID_PESSOA }, columnsRemote = { Dicionario.Pessoa.Colunas.ID_PESSOA }, tableAlias = "pessoa")

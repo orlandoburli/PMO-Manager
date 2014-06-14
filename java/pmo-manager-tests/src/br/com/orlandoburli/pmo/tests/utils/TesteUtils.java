@@ -19,13 +19,13 @@ public class TesteUtils {
 
 	public static void clearDB(DAOManager manager) throws DAOException {
 		new CargoDao(manager).dropSequence().dropTable().checkTable();
-		new MenuDao(manager).dropSequence().dropTable().checkTable();
 		new ObjetoDao(manager).dropSequence().dropTable().checkTable();
-		new UsuarioDao(manager).dropSequence().dropTable().checkTable();
+		new MenuDao(manager).dropSequence().dropTable().checkTable();
 		new PerfilDao(manager).dropSequence().dropTable().checkTable();
+		new UsuarioDao(manager).dropSequence().dropTable().checkTable();
 		new PessoaDao(manager).dropSequence().dropTable().checkTable();
-		new PessoaFisicaDao(manager).dropSequence().dropTable().checkTable();
 		new PessoaJuridicaDao(manager).dropSequence().dropTable().checkTable();
+		new PessoaFisicaDao(manager).dropSequence().dropTable().checkTable();
 		new ProjetoDao(manager).dropSequence().dropTable().checkTable();
 		new TermoAberturaDao(manager).dropSequence().dropTable().checkTable();
 		new TermoAberturaInteressadoDao(manager).dropSequence().dropTable().checkTable();

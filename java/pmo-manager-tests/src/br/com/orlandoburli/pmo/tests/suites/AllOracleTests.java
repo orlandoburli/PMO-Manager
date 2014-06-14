@@ -16,9 +16,12 @@ import br.com.orlandoburli.pmo.tests.cadastros.CargoTests;
 import br.com.orlandoburli.pmo.tests.cadastros.PessoaFisicaTests;
 import br.com.orlandoburli.pmo.tests.cadastros.PessoaJuridicaTests;
 import br.com.orlandoburli.pmo.tests.cadastros.PessoaTests;
+import br.com.orlandoburli.pmo.tests.projetos.ProjetoTests;
+import br.com.orlandoburli.pmo.tests.projetos.TermoAberturaInteressadoTests;
+import br.com.orlandoburli.pmo.tests.projetos.TermoAberturaTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({ MenuTests.class, ObjetoTests.class, PerfilTests.class, UsuarioTests.class, PessoaTests.class, PessoaFisicaTests.class, PessoaJuridicaTests.class, CargoTests.class })
+@SuiteClasses({ MenuTests.class, ObjetoTests.class, PerfilTests.class, UsuarioTests.class, PessoaTests.class, PessoaFisicaTests.class, PessoaJuridicaTests.class, CargoTests.class, ProjetoTests.class, TermoAberturaTests.class, TermoAberturaInteressadoTests.class })
 public class AllOracleTests {
 
 	@BeforeClass

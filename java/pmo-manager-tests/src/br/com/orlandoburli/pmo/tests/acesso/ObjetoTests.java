@@ -109,16 +109,15 @@ public class ObjetoTests {
 		be.inicializarObjetos();
 		be.inicializarObjetos();
 
-		
 		// Consulta de Perfis de Acesso
-		
+
 		ObjetoVo consultaPerfil = be.get(PMOConstants.Objeto.PERFIL_CONSULTA);
 		assertEquals(new Integer(PMOConstants.Objeto.PERFIL_CONSULTA), consultaPerfil.getIdObjeto());
 		assertEquals("Consulta de Perfis de Acesso", consultaPerfil.getNome());
 		assertEquals("perfilconsulta.action", consultaPerfil.getUrl());
-		
+
 		// Cadastro de Usuarios
-		
+
 		ObjetoVo cadastroUsuario = be.get(PMOConstants.Objeto.USUARIO_CADASTRO);
 		assertEquals(new Integer(PMOConstants.Objeto.USUARIO_CADASTRO), cadastroUsuario.getIdObjeto());
 		assertEquals("Cadastro de Usuários", cadastroUsuario.getNome());
@@ -130,7 +129,8 @@ public class ObjetoTests {
 
 		// Load properties
 		if (System.getProperty("sql.builder.class") == null || System.getProperty("sql.builder.class").trim().equals("")) {
-			System.getProperties().load(new FileInputStream("teste-postgres.properties"));
+//			System.getProperties().load(new FileInputStream("teste-postgres.properties"));
+			System.getProperties().load(new FileInputStream("teste-oracle.properties"));
 		}
 
 		manager = DAOManager.getDAOManager();
