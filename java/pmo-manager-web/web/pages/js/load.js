@@ -238,12 +238,12 @@ $(function() {
 
 
 	//===== Default select =====//
-
-	$(".select").select2({
-		minimumResultsForSearch: "-1",
+	$("select").attr("class", "");
+	
+	$("select").select2({
 		width: 250
 	});
-
+	
 
 	//===== Liquid select =====//
 

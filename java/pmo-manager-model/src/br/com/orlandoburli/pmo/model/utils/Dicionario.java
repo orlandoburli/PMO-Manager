@@ -141,7 +141,7 @@ public final class Dicionario {
 	public final class TermoAberturaInteressado {
 		public static final String TABELA_TERMO_ABERTURA_INTERESSADO = "termo_abertura_interessado";
 		public static final String UNIQUE_TERMO_INTERESSADO_PESSOA = "unq_termo_interessado_pessoa";
-		
+
 		public final class Colunas {
 			public static final String ID_INTERESSADO = "id_interessado";
 			public static final String ID_TERMO = TermoAbertura.Colunas.ID_TERMO;
@@ -152,7 +152,7 @@ public final class Dicionario {
 
 	public final class TermoAberturaAprovacao {
 		public static final String TABELA_TERMO_ABERTURA_APROVACAO = "termo_abertura_aprovacao";
-		
+
 		public final class Colunas {
 			public static final String ID_TERMO = TermoAbertura.Colunas.ID_TERMO;
 			public static final String ID_PESSOA = Pessoa.Colunas.ID_PESSOA;
@@ -162,11 +162,61 @@ public final class Dicionario {
 	}
 
 	public final class AnexoTermoAbertura {
-		public static final String ID_ANEXO_TERMO = "id_anexo_termo";
-		public static final String ID_TERMO = TermoAbertura.Colunas.ID_TERMO;
-		public static final String NOME_ARQUIVO = "nome_arquivo";
-		public static final String ARQUIVO = "arquivo";
-		public static final String EXTENSAO = "extensao";
+		public static final String TABELA_ANEXO_TERMO_ABERTURA = "anexo_termo";
+
+		public final class Colunas {
+			public static final String ID_ANEXO_TERMO = "id_anexo_termo";
+			public static final String ID_TERMO = TermoAbertura.Colunas.ID_TERMO;
+			public static final String NOME_ARQUIVO = "nome_arquivo";
+			public static final String ARQUIVO = "arquivo";
+			public static final String EXTENSAO = "extensao";
+		}
+	}
+
+	public final class SalaReuniao {
+		public static final String TABELA_SALA_REUNIAO = "sala_reuniao";
+
+		public final class Colunas {
+			public static final String ID_SALA_REUNIAO = "id_sala_reuniao";
+			public static final String NOME = "nome";
+			public static final String ATIVO = "ativo";
+		}
+	}
+
+	public final class AgendaReuniao {
+		public static final String TABELA_AGENDA_REUNIAO = "agenda_reuniao";
+
+		public final class Colunas {
+			public static final String ID_AGENDA_REUNIAO = "id_agenda_reuniao";
+			public static final String ID_SALA_REUNIAO = SalaReuniao.Colunas.ID_SALA_REUNIAO;
+			public static final String DATA_HORA_INICIO = "data_hora_inicio";
+			public static final String DATA_HORA_FIM = "data_hora_fim";
+			public static final String ID_PESSOA_RESPONSAVEL = "id_pessoa_responsavel";
+			public static final String ASSUNTO = "assunto";
+		}
+	}
+
+	public final class ConviteReuniao {
+		public static final String TABELA_CONVITE_REUNIAO = "convite_reuniao";
+
+		public final class Colunas {
+			public static final String ID_CONVITE_REUNIAO = "id_convite_reuniao";
+			public static final String ID_AGENDA_REUNIAO = AgendaReuniao.Colunas.ID_AGENDA_REUNIAO;
+			public static final String ID_PESSOA = PessoaFisica.Colunas.ID_PESSOA;
+			public static final String CONFIRMADO = "confirmado";
+		}
+	}
+
+	public final class Reuniao {
+		public static final String TABELA_REUNIAO = "reuniao";
+
+		public final class Colunas {
+			public static final String ID_REUNIAO = "id_reuniao";
+			public static final String ID_SALA_REUNIAO = AgendaReuniao.Colunas.ID_AGENDA_REUNIAO;
+			public static final String DATA_HORA_INICIO = "data_hora_inicio";
+			public static final String DATA_HORA_FIM = "data_hora_fim";
+			public static final String ASSUNTO = "assunto";
+		}
 	}
 
 }

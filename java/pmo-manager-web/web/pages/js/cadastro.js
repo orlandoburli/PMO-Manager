@@ -6,6 +6,8 @@ $(function() {
 	function loadPage(pagina) {
 		console.log(pagina);
 		
+		$(conteudoId).html("");
+		
 	    window.setTimeout(function(){
 	        $('.overlay').fadeOut(150, function() {
 	        	$(this).remove();

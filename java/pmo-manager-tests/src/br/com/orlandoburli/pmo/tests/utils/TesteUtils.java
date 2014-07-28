@@ -14,10 +14,12 @@ import br.com.orlandoburli.pmo.model.dao.projetos.ProjetoDao;
 import br.com.orlandoburli.pmo.model.dao.projetos.TermoAberturaAprovacaoDao;
 import br.com.orlandoburli.pmo.model.dao.projetos.TermoAberturaDao;
 import br.com.orlandoburli.pmo.model.dao.projetos.TermoAberturaInteressadoDao;
+import br.com.orlandoburli.pmo.model.dao.reuniao.SalaReuniaoDao;
 
 public class TesteUtils {
 
 	public static void clearDB(DAOManager manager) throws DAOException {
+		new SalaReuniaoDao(manager).dropSequence().dropTable().checkTable();
 		new CargoDao(manager).dropSequence().dropTable().checkTable();
 		new ObjetoDao(manager).dropSequence().dropTable().checkTable();
 		new MenuDao(manager).dropSequence().dropTable().checkTable();

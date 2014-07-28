@@ -19,7 +19,7 @@ table tbody tr td:nth-child(1) {
 		<tr>
 			<td>C&oacute;digo</td>
 			<td>Nome</td>
-			<td>Cpf</td>
+			<td>Cnpj</td>
 		</tr>
 	</thead>
 

@@ -31,6 +31,9 @@ function loadDataLink(dataLink) {
 
 // Carrega uma pagina no corpo
 function loadPage(pagina) {
+	
+	$(conteudoId).html("");
+	
 	console.log("Carregando pagina " + pagina);
 
 	$(conteudoId).fadeOut(tempo);

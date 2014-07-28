@@ -19,9 +19,10 @@ import br.com.orlandoburli.pmo.tests.cadastros.PessoaTests;
 import br.com.orlandoburli.pmo.tests.projetos.ProjetoTests;
 import br.com.orlandoburli.pmo.tests.projetos.TermoAberturaInteressadoTests;
 import br.com.orlandoburli.pmo.tests.projetos.TermoAberturaTests;
+import br.com.orlandoburli.pmo.tests.reuniao.SalaReuniaoTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({ MenuTests.class, ObjetoTests.class, PerfilTests.class, UsuarioTests.class, PessoaTests.class, PessoaFisicaTests.class, PessoaJuridicaTests.class, CargoTests.class, ProjetoTests.class, TermoAberturaTests.class, TermoAberturaInteressadoTests.class })
+@SuiteClasses({ MenuTests.class, ObjetoTests.class, PerfilTests.class, UsuarioTests.class, PessoaTests.class, PessoaFisicaTests.class, PessoaJuridicaTests.class, CargoTests.class, ProjetoTests.class, TermoAberturaTests.class, TermoAberturaInteressadoTests.class, SalaReuniaoTests.class })
 public class AllPostgresTests {
 
 	@BeforeClass

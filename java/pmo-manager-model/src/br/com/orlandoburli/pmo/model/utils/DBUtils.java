@@ -13,6 +13,7 @@ import br.com.orlandoburli.pmo.model.dao.cadastros.CargoDao;
 import br.com.orlandoburli.pmo.model.dao.cadastros.PessoaDao;
 import br.com.orlandoburli.pmo.model.dao.cadastros.PessoaFisicaDao;
 import br.com.orlandoburli.pmo.model.dao.cadastros.PessoaJuridicaDao;
+import br.com.orlandoburli.pmo.model.dao.reuniao.SalaReuniaoDao;
 
 public final class DBUtils {
 
@@ -30,6 +31,8 @@ public final class DBUtils {
 			new PessoaDao(manager).checkTable();
 			new PessoaJuridicaDao(manager).checkTable();
 			new PessoaFisicaDao(manager).checkTable();
+			
+			new SalaReuniaoDao(manager).checkTable();
 
 			// Objetos padrao
 

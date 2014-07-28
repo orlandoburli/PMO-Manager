@@ -10,7 +10,7 @@
 			<label class="control-label text-right">Pesquisar por: </label>
 		</div>
 		<div class="col-sm-2">
-			<select id="ParametroPesquisa" class="form-control">
+			<select id="ParametroPesquisa" class="select">
 				<option value="Nome">Nome</option>
 				<option value="CNPJ">CNPJ</option>
 				<option value="Codigo">Código</option>
@@ -28,6 +28,7 @@
 	</div>
 
 	<div class="panel-body">
+		<hr/>
 		<div class="DataGridConsulta" data-page="pessoajuridicaconsulta.grid.action" data-page-size="8" data-detail-page="pessoajuridicacadastro.action"></div>
 	</div>
 
