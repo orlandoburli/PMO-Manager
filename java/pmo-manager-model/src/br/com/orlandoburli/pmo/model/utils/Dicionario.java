@@ -44,6 +44,7 @@ public final class Dicionario {
 			public static final String ID_OBJETO = "id_objeto";
 			public static final String NOME = "nome";
 			public static final String URL = "url";
+			public static final String AUTO_START = "auto_start";
 		}
 	}
 

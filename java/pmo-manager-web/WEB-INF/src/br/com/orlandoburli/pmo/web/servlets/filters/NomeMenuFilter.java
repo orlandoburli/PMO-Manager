@@ -28,7 +28,10 @@ public class NomeMenuFilter extends BaseFilter {
 			if (menu != null) {
 				getRequest().setAttribute("titulo", menu.getNome());
 				getRequest().setAttribute("subtitulo", menu.getObjeto().getNome());
-				getRequest().setAttribute("subMenu", menu.getMenuPai().getNome());
+				
+				if (menu.getMenuPai() != null) {
+					getRequest().setAttribute("subMenu", menu.getMenuPai().getNome());
+				}
 				getRequest().setAttribute("menuAtivo", menu.getNome());
 			} else {
 				menu = buscaMenuAction(actionName, menus, false);
@@ -36,7 +39,9 @@ public class NomeMenuFilter extends BaseFilter {
 				if (menu != null) {
 					getRequest().setAttribute("titulo", menu.getNome());
 					getRequest().setAttribute("subtitulo", menu.getObjetoSecundario().getNome());
-					getRequest().setAttribute("subMenu", menu.getMenuPai().getNome());
+					if (menu.getMenuPai() != null) {
+						getRequest().setAttribute("subMenu", menu.getMenuPai().getNome());
+					}
 					getRequest().setAttribute("menuAtivo", menu.getNome());
 				}
 			}
@@ -52,7 +57,7 @@ public class NomeMenuFilter extends BaseFilter {
 
 			if (primario) {
 				if (m.getObjetoSecundario() != null) {
-//					Log.debug("Primário url: " + m.getObjeto().getUrl());
+					// Log.debug("Primário url: " + m.getObjeto().getUrl());
 				}
 				// Objeto primario
 				if (m.getObjeto() != null && m.getObjeto().getUrl() != null && m.getObjeto().getUrl().equalsIgnoreCase(actionName)) {
@@ -60,7 +65,8 @@ public class NomeMenuFilter extends BaseFilter {
 				}
 			} else {
 				if (m.getObjetoSecundario() != null) {
-//					Log.debug("Secundário url: " + m.getObjetoSecundario().getUrl());
+					// Log.debug("Secundário url: " +
+					// m.getObjetoSecundario().getUrl());
 				}
 				// Objeto secundario
 				if (m.getObjetoSecundario() != null && m.getObjetoSecundario().getUrl() != null && m.getObjetoSecundario().getUrl().equalsIgnoreCase(actionName)) {

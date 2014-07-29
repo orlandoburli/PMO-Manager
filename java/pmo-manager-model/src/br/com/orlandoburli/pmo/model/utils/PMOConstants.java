@@ -50,5 +50,7 @@ public class PMOConstants {
 		
 		public static final int TERMO_ABERTURA_CONSULTA = 3003;
 		public static final int TERMO_ABERTURA_CADASTRO = 3004;
+		
+		public static final int PAINEL = 9901;
 	}
 }

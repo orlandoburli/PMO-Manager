@@ -12,6 +12,7 @@ import br.com.orlandoburli.pmo.model.vo.acesso.UsuarioVo;
 import br.com.orlandoburli.pmo.model.vo.cadastros.CargoVo;
 import br.com.orlandoburli.pmo.model.vo.cadastros.PessoaFisicaVo;
 import br.com.orlandoburli.pmo.model.vo.cadastros.PessoaJuridicaVo;
+import br.com.orlandoburli.pmo.model.vo.domains.SimNao;
 import br.com.orlandoburli.pmo.model.vo.projetos.ProjetoVo;
 import br.com.orlandoburli.pmo.model.vo.projetos.TermoAberturaVo;
 import br.com.orlandoburli.pmo.model.vo.utils.ParametroVo;
@@ -48,13 +49,13 @@ public class ObjetoBe extends BaseBe<ObjetoVo, ObjetoDao> {
 		criaPadraoVo(TermoAberturaVo.class, "Termo de Abertura", PMOConstants.Objeto.TERMO_ABERTURA_CONSULTA, PMOConstants.Objeto.TERMO_ABERTURA_CADASTRO);
 
 		// Demais objetos
-		
+		saveIfNotExists(criaObjeto(PMOConstants.Objeto.PAINEL, "Painel", "painel.action", true));
 	}
 
 	public void criaPadraoVo(Class<?> vo, String descricao, Integer idConsulta, Integer idCadastro) throws BeException {
 		String voname = vo.getSimpleName().replace("Vo", "").toLowerCase();
-		saveIfNotExists(criaObjeto(idConsulta, "Consulta de " + descricao, voname + "consulta.action"));
-		saveIfNotExists(criaObjeto(idCadastro, "Cadastro de " + descricao, voname + "cadastro.action"));
+		saveIfNotExists(criaObjeto(idConsulta, "Consulta de " + descricao, voname + "consulta.action", false));
+		saveIfNotExists(criaObjeto(idCadastro, "Cadastro de " + descricao, voname + "cadastro.action", false));
 	}
 
 	public void saveIfNotExists(ObjetoVo objeto) throws BeException {
@@ -64,12 +65,12 @@ public class ObjetoBe extends BaseBe<ObjetoVo, ObjetoDao> {
 		save(objeto);
 	}
 
-	public ObjetoVo criaObjeto(Integer idObjeto, String nome, String url) {
+	public ObjetoVo criaObjeto(Integer idObjeto, String nome, String url, boolean autoStart) {
 		ObjetoVo objeto = new ObjetoVo();
 		objeto.setIdObjeto(idObjeto);
 		objeto.setNome(nome);
 		objeto.setUrl(url);
-
+		objeto.setAutoStart(autoStart ? SimNao.SIM : SimNao.NAO);
 		return objeto;
 	}
 

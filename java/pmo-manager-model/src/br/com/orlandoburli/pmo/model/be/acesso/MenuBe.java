@@ -29,7 +29,7 @@ public class MenuBe extends BaseBe<MenuVo, MenuDao> {
 	}
 
 	public void inicializarMenus() throws BeException {
-		saveIfNotExists(criaMenu(PMOConstants.Menu.DASHBOARD, null, null, "Painel", "icon-dashboard", 0, null));
+		saveIfNotExists(criaMenu(PMOConstants.Menu.DASHBOARD, PMOConstants.Objeto.PAINEL, null, "Painel", "icon-dashboard", 0, null));
 		saveIfNotExists(criaMenu(PMOConstants.Menu.ACESSO, null, null, "Acesso", "icon-users", 1, null));
 
 		saveIfNotExists(criaMenu(PMOConstants.Menu.PARAMETROS, PMOConstants.Objeto.PARAMETRO_CONSULTA, PMOConstants.Objeto.PARAMETRO_CADASTRO, "Parâmetros", "", 1, PMOConstants.Menu.ACESSO));

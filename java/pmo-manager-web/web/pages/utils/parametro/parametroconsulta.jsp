@@ -10,7 +10,7 @@
 			<label class="control-label text-right">Pesquisar por: </label>
 		</div>
 		<div class="col-sm-2">
-			<select id="ParametroPesquisa" class="select">
+			<select id="ParametroPesquisa" class="form-control input-medium select2me">
 				<option value="Nome">Nome</option>
 				<option value="Codigo">Código</option>
 			</select>

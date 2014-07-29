@@ -1,4 +1,4 @@
-
+<%-- 
 <link href="<%=request.getContextPath() %>/web/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath() %>/web/assets/css/londinium-theme.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath() %>/web/assets/css/styles.css" rel="stylesheet" type="text/css">
@@ -38,9 +38,9 @@
 <script src="<%=request.getContextPath() %>/web/assets/js/plugins/messenger/messenger-theme-flat.js"></script>
 
 
-<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/forms/wysihtml5/wysihtml5.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/forms/wysihtml5/wysihtml5.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/forms/wysihtml5/toolbar.js"></script>
- --%>
+
  
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/ckeditor/adapters/jquery.js"></script>
@@ -58,3 +58,40 @@
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/application_blank.js"></script>
+ --%>
+
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
+	rel="stylesheet" type="text/css" />
+<link
+	href="<%=request.getContextPath() %>/web/assets/global/plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="<%=request.getContextPath() %>/web/assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/web/assets/global/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/web/assets/global/plugins/uniform/css/uniform.default.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="<%=request.getContextPath() %>/web/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath() %>/web/assets/global/plugins/select2/select2.css" />
+<!-- END PAGE LEVEL STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="<%=request.getContextPath() %>/web/assets/global/css/components.css" rel="stylesheet"
+	type="text/css" />
+<link href="<%=request.getContextPath() %>/web/assets/global/css/plugins.css" rel="stylesheet"
+	type="text/css" />
+<link href="<%=request.getContextPath() %>/web/assets/admin/layout/css/layout.css" rel="stylesheet"
+	type="text/css" />
+<link id="style_color"
+	href="<%=request.getContextPath() %>/web/assets/admin/layout/css/themes/default.css"
+	rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/web/assets/admin/layout/css/custom.css" rel="stylesheet"
+	type="text/css" />
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico" />
